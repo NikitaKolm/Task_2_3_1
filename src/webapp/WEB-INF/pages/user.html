@@ -13,7 +13,7 @@
 <br/>
 <br/>
 <form th:action="@{/addUser}"
-      th:object="${userForm}" method="POST">
+      th:object="${user}" method="POST">
     First name:
     <input type="text" th:field="*{firstName}"/>
     Last name:
@@ -35,11 +35,11 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="us, iterStat : ${user}">
-            <td th:text="${us.id}"></td>
-            <td th:text="${us.firstName}"></td>
-            <td th:text="${us.lastName}"></td>
-            <td th:text="${us.email}"></td>
+        <tr th:each="us, iterStat : ${userList}">
+            <td th:text="${us.getId()}"></td>
+            <td th:text="${us.getFirstName()}"></td>
+            <td th:text="${us.getLastName()}"></td>
+            <td th:text="${us.getEmail()}"></td>
             <td>
                 <button th:action="@{/updateUser}" th:onclick="|window.location.href='/updateUser?id=${us.getId()}'|"
                         class="btn btn-outline-primary">Edit

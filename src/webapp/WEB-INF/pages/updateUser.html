@@ -8,8 +8,8 @@
 </head>
 <body style="background-color:#3d4249">
     <form th:action="@{/updateUser}"
-          th:object="${userForm}" method="POST">
-        <input type="hidden" name="id" th:value="${userForm.getId()}">
+          th:object="${user}" method="POST">
+        <input type="hidden" name="id" th:value="${user.getId()}">
         First name:
         <input type="text" th:field="*{firstName}" />
         Last name:

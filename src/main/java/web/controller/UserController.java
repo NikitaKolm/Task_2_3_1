@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import web.model.User;
-import web.model.UserForm;
 import web.service.UserService;
 
 import java.util.List;
@@ -20,35 +19,35 @@ public class UserController {
     @GetMapping(value = "/user")
     public String getUserList(ModelMap model) {
         List<User> users = userService.getAllUsers();
-        UserForm userForm = new UserForm();
-        model.addAttribute(userForm);
-        model.addAttribute("user", users);
+        User user = new User();
+        model.addAttribute(user);
+        model.addAttribute("userList", users);
         return "user";
     }
 
     @PostMapping(value = "/addUser")
-    public String addUser(ModelMap model, @ModelAttribute("user") UserForm userForm) {
-        userService.saveUser(new User(userForm.getFirstName(), userForm.getLastName(), userForm.getEmail()));
+    public String addUser(ModelMap model, @ModelAttribute("user") User user) {
+        userService.saveUser(new User(user.getFirstName(), user.getLastName(), user.getEmail()));
         return "redirect:/user";
     }
 
     @PostMapping(value = "/deleteUser")
-    public String removeUserById(ModelMap model, @ModelAttribute("user") UserForm userForm) {
-        userService.removeUserById(userForm.getId());
+    public String removeUserById(ModelMap model, @ModelAttribute("user") User user) {
+        userService.removeUserById(user.getId());
         return "redirect:/user";
     }
 
     @GetMapping(value = "/updateUser")
     public String getUserUpdateForm(ModelMap model, @RequestParam Long id) {
-        UserForm userForm = new UserForm();
-        userForm.setId(id);
-        model.addAttribute("userForm", userForm);
+        User user = new User();
+        user.setId(id);
+        model.addAttribute("user", user);
         return "updateUser";
     }
 
     @PostMapping(value = "/updateUser")
-    public String updateUser(ModelMap model, @ModelAttribute("user") UserForm userForm) {
-        userService.updateUser(userForm.getId(), userForm.getFirstName(), userForm.getLastName(), userForm.getEmail());
+    public String updateUser(ModelMap model, @ModelAttribute("user") User user) {
+        userService.updateUser(user);
         return "redirect:/user";
     }
 }

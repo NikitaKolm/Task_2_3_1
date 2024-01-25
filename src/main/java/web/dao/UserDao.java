@@ -8,7 +8,7 @@ public interface UserDao {
 
     void saveUser(User user);
 
-    void updateUser(long id, String firstName, String lastName, String email);
+    void updateUser(User user);
 
     void removeUserById(long id);
 
