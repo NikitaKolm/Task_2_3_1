@@ -34,6 +34,12 @@ public class UserServiceImpl implements UserService {
         userDao.removeUserById(id);
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public User getUserById(long id) {
+        return userDao.getUserById(id);
+    }
+
     @Transactional(readOnly = true)
     @Override
     public List<User> getAllUsers() {

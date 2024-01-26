@@ -39,8 +39,7 @@ public class UserController {
 
     @GetMapping(value = "/updateUser")
     public String getUserUpdateForm(ModelMap model, @RequestParam Long id) {
-        User user = new User();
-        user.setId(id);
+        User user = userService.getUserById(id);
         model.addAttribute("user", user);
         return "updateUser";
     }
