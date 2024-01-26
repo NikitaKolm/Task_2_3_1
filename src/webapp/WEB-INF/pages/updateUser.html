@@ -12,11 +12,11 @@
       th:object="${user}" method="POST">
     <input type="hidden" name="id" th:value="${user.getId()}">
     First name:
-    <input type="text" th:th:value="${user.getFirstName()}" th:field="*{firstName}"/>
+    <input type="text" th:value="${user.getFirstName()}" th:field="*{firstName}"/>
     Last name:
-    <input type="text" th:th:value="${user.getLastName()}" th:field="*{lastName}"/>
+    <input type="text" th:value="${user.getLastName()}" th:field="*{lastName}"/>
     Email:
-    <input type="text" th:th:value="${user.getEmail()}" th:field="*{email}"/>
+    <input type="text" th:value="${user.getEmail()}" th:field="*{email}"/>
     <input type="submit" value="Update"/>
 </form>
 </body>
